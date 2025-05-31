@@ -14,18 +14,28 @@
 <body>
 
     <nav>
-        <div class="nav-wrapper deep-orange">
+        <div class="nav-wrapper blue darken-4">
             <a href="#!" class="brand-logo">Projeto Cursos</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
+                <li><a href="/home">Home</a></li>
+                @if(Auth::guest())
+                <li><a href="{{route('login')}}">Login</a></li>
+                @else
                 <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
                 <li><a href="{{route('alunos')}}">Alunos</a></li>
+                <li><a href="{{route('login.sair')}}">Sair</a></li>
+                @endif
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile">
-        <li><a href="/">Home</a></li>
+        <li><a href="/home">Home</a></li>
+        @if(Auth::guest())
+        <li><a href="{{route('login')}}">Login</a></li>
+        @else
         <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
+        <li><a href="{{route('alunos')}}">Alunos</a></li>
+        @endif
     </ul>
